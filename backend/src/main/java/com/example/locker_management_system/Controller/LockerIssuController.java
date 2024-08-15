@@ -15,29 +15,29 @@ public class LockerIssuController {
 
     //add locker to database
     @PostMapping("/add")
-    public LockerIssue saveLockerIssu(LockerIssue lockerIssu) {
-        return lockerIssuService.saveLockerIssue(lockerIssu);
+    public LockerIssue saveLockerIssu(LockerIssue lockerIssu, Long accountNumber, Long lockerId) {
+        return lockerIssuService.saveLockerIssue(lockerIssu, accountNumber, lockerId);
 
     }
 
     @GetMapping("/get/{lockerId}")
-    public LockerIssue getLockerIssuById(Long lockerId) {
-        return lockerIssuService.getLockerIssueById(lockerId);
+    public LockerIssue getLockerIssuById(Long Id, Long accountNumber, Long lockerId) {
+        return lockerIssuService.getLockerIssueById(Id,accountNumber, lockerId);
     }
 
     @DeleteMapping("/delete/{lockerId}")
-    public void deleteLockerIssuById(Long lockerId) {
-        lockerIssuService.deleteLockerIssueById(lockerId);
+    public void deleteLockerIssuById(Long issuId, Long accountNumber, Long lockerId) {
+        lockerIssuService.deleteLockerIssueById(issuId, accountNumber, lockerId);
     }
 
     @PutMapping("/update/{lockerId}")
-    public LockerIssue updateLockerIssu(Long lockerId, LockerIssue lockerIssu) {
-        return lockerIssuService.updateLockerIssue(lockerId, lockerIssu);
+    public LockerIssue updateLockerIssu(Long issuId, LockerIssue lockerIssu, Long accountNumber, Long lockerId) {
+        return lockerIssuService.updateLockerIssue(issuId, lockerIssu, accountNumber, lockerId);
     }
 
     @GetMapping("/getAll")
-    public List<LockerIssue> getAllLockerIssues() {
-        return lockerIssuService.getAllLockerIssues();
+    public List<LockerIssue> getAllLockerIssues(Long accountNumber, Long lockerId) {
+        return lockerIssuService.getAllLockerIssues( accountNumber, lockerId);
     }
 
 

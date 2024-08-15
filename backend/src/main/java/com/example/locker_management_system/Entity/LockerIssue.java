@@ -17,7 +17,7 @@ public class LockerIssue {
     private long issueId;
 
     @Column(nullable = false)
-    private long accountNumber;
+    private long accNo;
 
 
     @Column(nullable = false)
@@ -30,8 +30,14 @@ public class LockerIssue {
     private LocalDate ValidDateTo;
 
     @Column(nullable = false)
-    private long lockerId;
+    private long locId;
 
+    @OneToOne
+    @JoinColumn(name = "accountNumber")
+    private CustomerRegistration customerRegistration;
 
+    @OneToOne
+    @JoinColumn(name = "locker_Id")
+    private LockerMaster lockerMaster;
 
 }

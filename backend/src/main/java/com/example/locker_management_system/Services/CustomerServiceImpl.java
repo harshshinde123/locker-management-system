@@ -5,11 +5,13 @@ import com.example.locker_management_system.Entity.CustomerRegistration;
 import com.example.locker_management_system.Repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
@@ -20,8 +22,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
     @Override
     public CustomerRegistration saveCustomer(CustomerRegistration customer) {
-        validateAadhaarNumber(customer);
-        validatePhone(customer);
         return customerRepository.save(customer);
     }
 
@@ -57,20 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return null;
     }
-    public void validateAadhaarNumber(CustomerRegistration customer) {
-        // Check if the Aadhaar number matches the required pattern
-        String aadhaarNumber = customer.getPhoneNumber();
-        if (aadhaarNumber == null || !aadhaarNumber.matches("\\d{12}")) {
-            throw new UserException("Aadhaar number should be exactly 12 digits and numeric");
-        }
-    }
-    public void validatePhone(CustomerRegistration customer) {
-        // Check if the phone number matches Indian phone number norms
-        String phoneNumber = customer.getPhoneNumber();
-        if (phoneNumber == null || !phoneNumber.matches("[6-9]\\d{9}")) {
-            throw new UserException("Phone number should be exactly 10 digits, start with 6-9 and be numeric");
-        }
-    }
+
 
 
 }

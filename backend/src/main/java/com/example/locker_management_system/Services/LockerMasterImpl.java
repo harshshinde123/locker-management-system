@@ -4,17 +4,20 @@ import com.example.locker_management_system.Entity.LockerMaster;
 import com.example.locker_management_system.Repository.LockerMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class LockerMasterImpl implements LockerMasterService {
     @Autowired
     private LockerMasterRepository lockerMasterRepository;
 
     @Override
     public LockerMaster saveLocker(LockerMaster lockerMaster) {
+
         return lockerMasterRepository.save(lockerMaster);
     }
 
@@ -41,7 +44,7 @@ public class LockerMasterImpl implements LockerMasterService {
             lockerMasterToUpdate.setLockerSize(lockerMasterOptional.get().getLockerSize());
             lockerMasterToUpdate.setLockerPrice(lockerMaster.getLockerPrice());
             lockerMasterToUpdate.setLockerStatus(lockerMaster.getLockerStatus());
-            lockerMasterToUpdate.setLockerkeyno(lockerMaster.getLockerkeyno());
+            lockerMasterToUpdate.setLockerKeyNo(lockerMaster.getLockerKeyNo());
 
             return lockerMasterRepository.save(lockerMasterToUpdate);
         }

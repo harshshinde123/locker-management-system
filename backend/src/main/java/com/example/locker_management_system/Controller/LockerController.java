@@ -36,7 +36,7 @@ public class LockerController {
     }
 
     @GetMapping("/getAll")
-    public List<LockerMaster> GetAllLockers() {
+    public  List<LockerMaster> GetAllLockers() {
         return lockerMasterService.GetAllLockers();
     }
 }

@@ -20,16 +20,16 @@ public class LockerMaster {
         private long lockerNumber;
 
         @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
         private Lockersize lockerSize;
 
         @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
         private Lockerstatus lockerStatus;
 
         @Column(nullable = false)
         private Double lockerPrice;
 
         @Column(nullable = false)
-        private long lockerkeyno;
-
-
+        private Long lockerKeyNo;
 }

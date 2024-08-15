@@ -2,6 +2,7 @@ package com.example.locker_management_system.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
@@ -26,8 +27,10 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
+    @NotBlank(message = "password id mandatory")
     private String password;
 
-
+    @Column(nullable = false)
+    private String role;
 }

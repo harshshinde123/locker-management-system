@@ -8,12 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
+@Transactional
 public class LockerVisitImpl implements LockerVisitService {
     @Autowired
     private DailyVisitRepository lockerVisitRepository;
 
     @Override
-    @Transactional
+
     public LockerDailyVisit saveLockerVisit(LockerDailyVisit lockerDailyVisit) {
         return lockerVisitRepository.save(lockerDailyVisit);
     }

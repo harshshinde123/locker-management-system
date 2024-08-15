@@ -24,6 +24,7 @@ public class UserController {
     //add user to database
     @PostMapping("/add")
     @ResponseStatus( value = HttpStatus.CREATED)
+
    public User saveUser ( @Valid @RequestBody User user)
    {
        return userService.saveUser(user);
